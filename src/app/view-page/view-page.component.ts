@@ -19,7 +19,7 @@ export class ViewPageComponent implements OnInit {
   @ViewChild('mg')mg:ElementRef;
   org:boolean=false;
   location:boolean=false;
-  searchableArray:any=null;
+  searchableArray:any=[];
   people:boolean=false;
   findQuery:any=null;
   options: AnimationOptions = {
@@ -108,25 +108,29 @@ export class ViewPageComponent implements OnInit {
       return this.showToast("Please Enter Text")}
     this.vs.sm=null;
 
-    this.vs.getRomResults(this.searchQuery).then((res:any)=>{
-      this.btnClicked=false;
-      console.log(res)
-      res.value.forEach((value:any) => {
-        let people=   value.people.map((itm)=>{return {entity:'people',item:itm}});
-        let org=   value.organizations.map((itm)=>{return {entity:'org',item:itm}});
-        let location=   value.locations.map((itm)=>{return {entity:'loc',item:itm}});
-          setTimeout(() => {
-            console.log(people);
-          }, 1000);
-          this.enTdata.people.push(...people);
-          this.enTdata.location.push(...location);
-          this.enTdata.org.push(...org);
+    // this.vs.getRomResults(this.searchQuery).then((res:any)=>{
+    //   this.btnClicked=false;
+    //   console.log(res)
+    //   res.value.forEach((value:any) => {
+    //     let people=   value.people.map((itm)=>{return {entity:'people',item:itm}});
+    //     let org=   value.organizations.map((itm)=>{return {entity:'org',item:itm}});
+    //     let location=   value.locations.map((itm)=>{return {entity:'loc',item:itm}});
+    //       setTimeout(() => {
+    //         console.log(people);
+    //       }, 1000);
+    //       this.enTdata.people.push(...people);
+    //       this.enTdata.location.push(...location);
+    //       this.enTdata.org.push(...org);
 
-        });
-       setTimeout(() => {
-          console.log(this.enTdata)
-        }, 2000)
-    })
+    //     });
+    //    setTimeout(() => {
+    //       console.log(this.enTdata)
+    //     }, 2000)
+    // })
+    this.onChange(false);
+
+
+
   }
 
   async showToast(msg: string) {
@@ -161,16 +165,18 @@ export class ViewPageComponent implements OnInit {
   onChangeSelectiin(event, index?:number){
   console.log(event.target.checked,event.value,event.target.value)
 
-    
 
-   this.searchableArray = new Array;
+
+  //  let highLightArray = new Array;
     if(event.target.checked){
-      this.searchableArray.push(event.target.value);
+      this.searchableArray = [...this.searchableArray,event.target.value];
     }else{
 
           const b= this.searchableArray.indexOf(event.target.value);
       if (this.searchableArray.indexOf(event.target.value)!=null){
         this.searchableArray.splice(b,1);
+        this.searchableArray = [...this.searchableArray];
+
       }
     }
 

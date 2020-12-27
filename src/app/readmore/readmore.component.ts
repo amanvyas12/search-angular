@@ -19,11 +19,11 @@ export class ReadMoreComponent implements AfterViewInit {
     @Input() text: string;
     @Input() search:string
     @Input() id:string
-    @Input() availableIds:string
+    @Input() availableIds:any[]
     //maximum height of the container
     @Input() maxHeight: number = 100;
     @Input() type:string;
-    //set these to false to get the height of the expended container 
+    //set these to false to get the height of the expended container
     public isCollapsed: boolean = true;
     public isCollapsable: boolean = false;
 

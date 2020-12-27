@@ -8,26 +8,34 @@ export class HighlightPipe implements PipeTransform {
     value: any;
 
     transform(value: any, args: any,type:string,id:any,availableids:any): any {
-      console.log(value,availableids,id)
-      if(!availableids.includes(id) ){
-          return value;
-      }
+      console.log(availableids,id)
 
-      if(type==null){
-        type="general";
-      }
+      if (availableids !== null) {
+        if(!availableids.includes(id) ){
+            return value;
+        }
+        
+        if(type==null){
+          type="general";
+        }
+
         if (!args) {return value;}
 
 
-        args.forEach(text => {
+          args.forEach(text => {
 
 
-            var reText = new RegExp(text.item, 'gi');
-            value = value.replace(reText, `<mark class=${text.entity}>`+ text.item + `</mark>`);
-            //for your custom css
-            // value = value.replace(reText, "<span class='highlight-search-text'>" + text + "</span>");
+              var reText = new RegExp(text.item, 'gi');
+              value = value.replace(reText, `<mark class=${text.entity}>`+ text.item + `</mark>`);
+              //for your custom css
+              // value = value.replace(reText, "<span class='highlight-search-text'>" + text + "</span>");
 
-          });
-        return value;
+            });
+            return value;
+
+      }
+
+          return value;
     }
+
 }
