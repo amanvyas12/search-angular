@@ -14,12 +14,14 @@ export class HighlightPipe implements PipeTransform {
         if(!availableids.includes(id) ){
             return value;
         }
-        
+
         if(type==null){
           type="general";
         }
 
-        if (!args) {return value;}
+        if (!args) {
+          return value;
+        }
 
 
           args.forEach(text => {

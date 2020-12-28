@@ -12,8 +12,8 @@ export class ViewServiceService {
   sm:any;
   searchQuery:any;
   // public url:string="https://searchdoc1.search.windows.net/indexes/search/docs?api-version=2020-06-30&search=";
-  public enurl:string="http://40.88.10.243:8000/en_search";
-  public rmurl:string="http://40.88.10.243:8000/rm_search";
+  public enurl:string="https://azuresearch.azurewebsites.net/en_search";
+  public rmurl:string="https://azuresearch.azurewebsites.net/rm_search";
 
   // http://104.42.112.166:8000/rm_search
   //public url:string="https://textanalysisbackend.azurewebsites.net/"
