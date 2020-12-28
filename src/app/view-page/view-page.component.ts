@@ -51,7 +51,7 @@ export class ViewPageComponent implements OnInit {
     this.btnClicked = true;
     this.enTdata = {people: [] , location:[], org:[]};
     this.vs.sm = null;
-    if(event){
+    if(event){ 
 
       this.vs.getRomResults(this.searchQuery).then((res:any)=>{
         this.btnClicked=false;
